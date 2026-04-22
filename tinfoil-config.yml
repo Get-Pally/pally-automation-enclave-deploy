@@ -4,7 +4,7 @@ memory: 32768
 
 containers:
   - name: "automation"
-    image: "ghcr.io/get-pally/pally-automation-enclave@sha256:273c59b3aeaa1eb01988e7db6821d6dbb2b76b86fc06ab4bbc6d6a1815390ee9"
+    image: "ghcr.io/get-pally/pally-automation-enclave@sha256:15767e1251abbee09a16af920f6b3bd353f40639aa158b90edc325fa51ef83ef"
     env:
       - PORT: "8080"
       - PALLY_TINFOIL_ATTESTATION_REQUIRED: "1"
@@ -18,7 +18,8 @@ containers:
       test:
         [
           "CMD",
-          "python3",
+          "/usr/bin/python3",
+          "-S",
           "-c",
           "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=5)",
         ]
